@@ -41,7 +41,7 @@ public class EmailSender
             EnableSsl = true,
         };
 
-        var mail = new MailMessage(user, to)
+        using var mail = new MailMessage(user, to)
         {
             Subject = $"Portfolio contact from {name}",
             Body = $"From: {name} <{fromEmail}>\n\n{message}",
