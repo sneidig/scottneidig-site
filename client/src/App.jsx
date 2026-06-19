@@ -17,7 +17,11 @@ function App() {
         if (!res.ok) throw new Error('Failed to load')
         return res.json()
       })
-      .then(setContent)
+      .then((data) => {
+        // Guard the shape downstream components depend on.
+        if (!data?.project?.images || !data?.skillGroups) throw new Error('Malformed content')
+        setContent(data)
+      })
       .catch(() => setError(true))
   }, [])
 

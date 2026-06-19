@@ -60,7 +60,9 @@ section {
 }
 
 .hero__cta:hover,
-.contact__cta:hover {
+.contact__cta:hover,
+.hero__cta:focus-visible,
+.contact__cta:focus-visible {
   background: var(--accent);
   text-decoration: none;
   transform: translateY(-1px);

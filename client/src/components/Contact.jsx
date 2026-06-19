@@ -47,15 +47,15 @@ function Contact() {
       ) : (
         <form className="contact__form" onSubmit={handleSubmit}>
           <input
-            name="name" placeholder="Your name" value={form.name}
+            name="name" placeholder="Your name" aria-label="Your name" value={form.name}
             onChange={update} required
           />
           <input
-            name="email" type="email" placeholder="Your email" value={form.email}
+            name="email" type="email" placeholder="Your email" aria-label="Your email" value={form.email}
             onChange={update} required
           />
           <textarea
-            name="message" placeholder="Your message" rows="5" value={form.message}
+            name="message" placeholder="Your message" aria-label="Your message" rows="5" value={form.message}
             onChange={update} required
           />
 
