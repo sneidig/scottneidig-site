@@ -18,6 +18,7 @@ public class ContentController : ControllerBase
     public async Task<IActionResult> Get()
     {
         var project = await _db.Projects
+            .OrderBy(p => p.Id)
             .Include(p => p.Images)
             .Include(p => p.Points)
             .Select(p => new
