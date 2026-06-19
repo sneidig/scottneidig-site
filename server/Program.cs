@@ -11,8 +11,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // SQL Server via EF Core. Dev uses local SQL Server; prod uses the connection
 // string from configuration (e.g. Azure SQL), so dev and prod share one engine.
-var connection = builder.Configuration.GetConnectionString("Default")
-    ?? throw new InvalidOperationException("Missing connection string 'Default'.");
+var connection = builder.Configuration.GetConnectionString("Default");
+if (string.IsNullOrWhiteSpace(connection))
+    throw new InvalidOperationException("Missing connection string 'Default'.");
 builder.Services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(connection));
 
 builder.Services.AddControllers();
