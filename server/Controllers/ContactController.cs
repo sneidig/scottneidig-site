@@ -35,14 +35,19 @@ public class ContactController : ControllerBase
             string.IsNullOrWhiteSpace(req.Message))
             return BadRequest(new { error = "Please fill in your name, a valid email, and a message." });
 
-        if (req.Message.Length > 5000)
-            return BadRequest(new { error = "Message is too long." });
+        // Trim first, then validate the trimmed lengths against the model's limits.
+        var name = req.Name.Trim();
+        var email = req.Email.Trim();
+        var message = req.Message.Trim();
+
+        if (name.Length > 100 || email.Length > 200 || message.Length > 5000)
+            return BadRequest(new { error = "One or more fields exceed the maximum length." });
 
         var msg = new ContactMessage
         {
-            Name = req.Name.Trim(),
-            Email = req.Email.Trim(),
-            Message = req.Message.Trim(),
+            Name = name,
+            Email = email,
+            Message = message,
         };
         _db.ContactMessages.Add(msg);
         await _db.SaveChangesAsync();
