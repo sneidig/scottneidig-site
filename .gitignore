@@ -40,3 +40,4 @@ server/wwwroot/
 
 # Publish output (generated)
 server/publish/
+/publish/

@@ -1,0 +1,376 @@
+/* Layout + component styles for the one-page portfolio. */
+
+.page {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* shared section bits */
+.section__eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.78rem;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+section {
+  padding: 64px 0;
+  border-top: 1px solid var(--border);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  padding: 96px 0 72px;
+}
+
+.hero__eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.hero__title {
+  font-size: 3.4rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 12px 0 20px;
+}
+
+.hero__lead {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  max-width: 640px;
+}
+
+.hero__cta,
+.contact__cta {
+  display: inline-block;
+  margin-top: 28px;
+  background: var(--accent-strong);
+  color: #fff;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 8px;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.hero__cta:hover,
+.contact__cta:hover {
+  background: var(--accent);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+/* ---------- Project (Jambalam) ---------- */
+.project__title {
+  font-size: 1.9rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 18px;
+}
+
+.project__shot {
+  display: block;
+  width: 100%;
+  padding: 0;
+  cursor: pointer;
+  margin: 8px 0 28px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.project__shot:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+}
+
+.project__shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.project__gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.shot {
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  transition: transform 0.15s, border-color 0.15s;
+}
+
+.shot:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+
+.shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.shot figcaption {
+  padding: 10px 12px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* ---------- Lightbox (modal image viewer) ---------- */
+.lb {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: rgba(0, 0, 0, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.lb__figure {
+  margin: 0;
+  max-width: 90vw;
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lb__figure img {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+.lb__figure figcaption {
+  margin-top: 14px;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.lb__close,
+.lb__arrow {
+  position: fixed;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+}
+
+.lb__close:hover,
+.lb__arrow:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.lb__close {
+  top: 20px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.lb__arrow {
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  font-size: 2.4rem;
+  line-height: 1;
+}
+
+.lb__arrow--prev { left: 24px; }
+.lb__arrow--next { right: 24px; }
+
+@media (max-width: 640px) {
+  .lb__arrow { width: 42px; height: 42px; font-size: 1.8rem; }
+  .lb__arrow--prev { left: 8px; }
+  .lb__arrow--next { right: 8px; }
+}
+
+.project__lead {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin-bottom: 28px;
+}
+
+.project__meansLabel {
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.project__points {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px;
+  display: grid;
+  gap: 14px;
+}
+
+.project__point {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 18px;
+  color: var(--text-muted);
+}
+
+.project__point strong {
+  color: var(--text);
+}
+
+.project__meta {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* ---------- Skills ---------- */
+.skills__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 28px;
+}
+
+.skills__label {
+  font-size: 1rem;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+
+.skills__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: var(--text-muted);
+}
+
+/* ---------- Contact ---------- */
+.contact__title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.contact__lead {
+  color: var(--text-muted);
+  max-width: 540px;
+  margin-bottom: 24px;
+}
+
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 520px;
+}
+
+.contact__form input,
+.contact__form textarea {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 14px;
+  color: var(--text);
+  font: inherit;
+  font-size: 1rem;
+  resize: vertical;
+}
+
+.contact__form input:focus,
+.contact__form textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.contact__form .contact__cta {
+  align-self: flex-start;
+  margin-top: 4px;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 600;
+}
+
+.contact__cta:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* Honeypot — visually hidden, off-screen, but present in the DOM for bots. */
+.contact__hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.contact__success {
+  color: #5bd49a;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.contact__error {
+  color: #ff8a8a;
+}
+
+.contact__alt {
+  margin-top: 24px;
+  color: var(--text-muted);
+}
+
+.loadnote {
+  color: var(--text-muted);
+  padding: 24px 0;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 32px 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 640px) {
+  .hero__title { font-size: 2.4rem; }
+  .hero__lead { font-size: 1.1rem; }
+  .project__title { font-size: 1.5rem; }
+  section { padding: 48px 0; }
+  .hero { padding: 64px 0 48px; }
+}
