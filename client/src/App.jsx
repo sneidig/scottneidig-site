@@ -19,7 +19,7 @@ function App() {
       })
       .then((data) => {
         // Guard the shape downstream components depend on.
-        if (!Array.isArray(data?.project?.images) ||
+        if (!Array.isArray(data?.project?.images) || data.project.images.length === 0 ||
             !Array.isArray(data?.project?.points) ||
             !Array.isArray(data?.skillGroups)) {
           throw new Error('Malformed content')
