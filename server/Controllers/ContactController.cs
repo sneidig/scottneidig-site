@@ -14,11 +14,13 @@ public class ContactController : ControllerBase
 {
     private readonly AppDbContext _db;
     private readonly EmailSender _email;
+    private readonly ILogger<ContactController> _logger;
 
-    public ContactController(AppDbContext db, EmailSender email)
+    public ContactController(AppDbContext db, EmailSender email, ILogger<ContactController> logger)
     {
         _db = db;
         _email = email;
+        _logger = logger;
     }
 
     [HttpPost]
@@ -54,8 +56,10 @@ public class ContactController : ControllerBase
 
         try {
             await _email.SendContactAsync(msg.Name, msg.Email, msg.Message);
-        } catch (Exception ex) { 
-            /* log it; message is already saved, so don't fail the request */ }
+        } catch (Exception ex) {
+            // Message is already saved, so don't fail the request — just log it.
+            _logger.LogError(ex, "Failed to send contact notification email.");
+        }
 
         return Ok(new { ok = true });
     }
