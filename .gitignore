@@ -1,0 +1,42 @@
+# ---- .NET ----
+bin/
+obj/
+*.user
+*.suo
+.vs/
+appsettings.*.local.json
+
+# ---- Secrets (never commit) ----
+# SMTP password / prod connection strings belong in user-secrets or env vars.
+secrets.json
+appsettings.Production.json
+appsettings.*.sample.json
+*.env
+.env
+
+# ---- SQLite leftovers (we moved to SQL Server) ----
+*.db
+*.db-shm
+*.db-wal
+
+# ---- Node / React ----
+node_modules/
+client/dist/
+client/node_modules/
+npm-debug.log*
+
+# ---- OS ----
+.DS_Store
+Thumbs.db
+
+# ---- Internal planning docs (keep out of the public repo) ----
+PLAN.md
+jambalam-case-study.md
+screenshots/
+
+
+# Built React frontend (generated at publish time)
+server/wwwroot/
+
+# Publish output (generated)
+server/publish/
